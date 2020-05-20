@@ -153,4 +153,26 @@ route.get('/questions/subjects', async (req, res)=>{
            
             
     })
+
+    route.get('/users', async(req, res)=>{
+
+        let allYear=[]
+        Question.find({}, (err, results)=>
+       {
+           if(err) throw err
+          
+           results.forEach(result=>
+           {
+           const {questionYear} = result
+            allYear.push(questionYear)
+           })
+           console.log(allYear)
+       res.status(200).json(allYear)
+       
+
+       })
+       
+  
+   
+})
 module.exports=route
